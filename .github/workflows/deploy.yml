@@ -18,6 +18,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      NEXT_PUBLIC_BASE_PATH: /carta-etchegoyen
+
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -42,6 +45,9 @@ jobs:
 
       - name: Build static export
         run: pnpm build
+
+      - name: Disable Jekyll
+        run: touch out/.nojekyll
 
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@v5

@@ -1,9 +1,11 @@
+import {Alergenos, FloatingFoodIcons, Picante} from "@/components/icons";
+
 type Producto = {
 	nombre: string;
 	descripcion: string;
 	precio: number;
 	alergenos?: string[];
-	picante?: boolean;
+	picante?: 1 | 2 | 3;
 }
 
 type Menu<T> = Record<string, T[]>;
@@ -13,78 +15,92 @@ const Productos: Menu<Producto> = {
 		{
 			nombre: "Echegoyen",
 			descripcion: "Gouda fundido, salsa cheddar, sañsa especial y virutas de bacon crispy.",
-			precio: 7
+			precio: 7,
+			alergenos: ["leche", "huevo", "mostaza"]
 		},
 		{
 			nombre: "Cheeseburger",
 			descripcion: "Carne especiada, salsa Burger, Cheddar ahumado fundido, mahonesa ahumada, dados de tomate y virutas de bacon crispy.",
-			precio: 8.50
+			precio: 8.50,
+			alergenos: ["leche", "huevo", "mostaza"]
 		},
 		{
 			nombre: "Steak house",
 			descripcion: "Nuestro pulled pork, Gouda fundido, mahonesa ahumada, BBQ Jack Daniel's Tennessee, salsa Bourbon y jalapeños.",
 			precio: 9,
-			picante: true
+			picante: 1,
+			alergenos: ["leche", "huevo", "mostaza", "sulfitos"]
 		},
 		{
 			nombre: "Bravas",
 			descripcion: "Patatas con nuestra salsa picante y ali-oli de ajo negro.",
-			precio: 7.5
+			precio: 7.5,
+			alergenos: ["huevo"]
 		}
 	],
 	entrantes: [
 		{
 			nombre: "Pollo corn flakes",
 			descripcion: "Pollo crujiente con cereales, acompañado de salsa miel/mostaza (8 uds.)",
-			precio: 8.5
+			precio: 8.5,
+			alergenos: ["gluten", "huevo", "mostaza"]
 		}
 	],
 	hamburguesas: [
 		{
 			nombre: "Suculenta",
 			descripcion: "Pan Viena, 250 g de vaca rubia gallega, lechuga, tomate, Gouda, cebolla, pepinillo, bacon y huevo frito.",
-			precio: 12
+			precio: 12,
+			alergenos: ["gluten", "leche", "huevo"]
 		},
 		{
 			nombre: "Crispy",
 			descripcion: "Brioche potato roll, pollo rebozado en Corn Flakes, salsa Thai, lechuga, tomate, pepinillo y cebolla caramelizada. Coronado con una bola de queso asturiano René Picott.",
-			precio: 12
+			precio: 12,
+			alergenos: ["gluten", "leche", "huevo", "soja", "sésamo"]
 		},
 		{
 			nombre: "Cojonuda",
 			descripcion: "Brioche potato roll, 220 g de vaca rubia gallega ahumada, salsa Print, lechuga, cebolla, pepinillo y doble Cheddar ahumado.",
-			precio: 12
+			precio: 12,
+			alergenos: ["gluten", "leche", "huevo", "mostaza"]
 		},
 		{
 			nombre: "Cabrísima",
 			descripcion: "Brioche negro, 250 g de vaca rubia gallega, lechuga, queso de cabra puro, salsa de cerveza negra y cebolla roja encurtida en habaneros.",
 			precio: 12,
-			picante: true
+			picante: 1,
+			alergenos: ["gluten", "leche", "sulfitos"]
 		},
 		{
 			nombre: "Locura",
 			descripcion: "Brioche negro, 220 g de vaca rubia gallega ahumada, crema Lotus, bacon, tomate, salsa ranchera y doble Gouda.",
-			precio: 12
+			precio: 12,
+			alergenos: ["gluten", "leche", "huevo", "soja"]
 		},
 		{
 			nombre: "Xtreme Cheddar",
 			descripcion: "Brioche potato roll, 220 g de vaca rubia gallega ahumada, bacon, aros de Cheddar, cebolla caramelizada, mahonesa ahumada y muuucho Cheddar ahumado.",
-			precio: 13.5
+			precio: 13.5,
+			alergenos: ["gluten", "leche", "huevo"]
 		},
 		{
 			nombre: "Xtreme Bacón",
 			descripcion: "Brioche potato roll, 220 g de vaca rubia gallega ahumada, salsa Smokey Baconnaise, mermelada de bacon casera, doble Gouda, cebolla picada y muuucho bacon.",
-			precio: 13.5
+			precio: 13.5,
+			alergenos: ["gluten", "leche", "huevo", "mostaza"]
 		},
 		{
 			nombre: "Carnívora",
 			descripcion: "Brioche potato roll, 250 g de vaca rubia gallega, 250 g de pulled pork, mahonesa ahumada, Gouda, bacon, tomate, aros de cebolla rebozados y BBQ Jack Daniel’s Tennessee.",
-			precio: 15
+			precio: 15,
+			alergenos: ["gluten", "leche", "huevo", "mostaza", "sulfitos"]
 		},
 		{
 			nombre: "Trufavorita",
 			descripcion: "Brioche potato roll, 250 g de vaca rubia gallega, setas Portobello, aceite crudo de trufa, queso Monterrey Jack fundido, salsa de trufa y trufa laminada.",
-			precio: 15.5
+			precio: 15.5,
+			alergenos: ["gluten", "leche", "huevo"]
 		}
 	],
 	pulled_pork: [
@@ -92,19 +108,22 @@ const Productos: Menu<Producto> = {
 			nombre: "Diablo",
 			descripcion: "Brioche negro, pulled pork con salsa Búffalo, lechuga, tomate, cebolla y queso Monterrey Jack.",
 			precio: 10.50,
-			picante: true
+			picante: 1,
+			alergenos: ["gluten", "leche", "huevo", "sulfitos"]
 		},
 		{
 			nombre: "Black Jack",
 			descripcion: "Brioche negro, pulled pork en salsa, lechuga, tomate, cebolla y queso Monterrey Jack.",
 			precio: 10.50,
+			alergenos: ["gluten", "leche", "huevo", "sulfitos"]
 		}
 	],
 	pulled_chicken: [
 		{
 			nombre: "",
 			descripcion: "Pan Viena, jugoso pollo desmechado con salsa yogurt casero, lechuga, Gouda, bacon y aros de cebolla rebozados",
-			precio: 10.70
+			precio: 10.70,
+			alergenos: ["gluten", "leche", "huevo"]
 		}
 	],
 	cochinita_pibil: [
@@ -112,39 +131,46 @@ const Productos: Menu<Producto> = {
 			nombre: "",
 			descripcion: "Pan Viena, carne de cerdo desmechada y macerada en achiote, lechuga, tomate, jalapeños, queso Monterrey Black y cebolla roja encurtida con chiles habaneros.",
 			precio: 11.50,
-			picante: true,
+			picante: 1,
+			alergenos: ["gluten", "leche", "sulfitos"]
 		}
 	],
 	hot_dogs: [
 		{
 			nombre: "Original",
 			descripcion: "Ketchup, mostaza, cebolla picada, pepinillo y cebolla crujiente.",
-			precio: 6
+			precio: 6,
+			alergenos: ["gluten", "mostaza"]
 		},
 		{
 			nombre: "Bacon & Cheese",
 			descripcion: "Mahonesa, Gouda, bacon, salsa Cheddar y virutas de bacon crispy.",
-			precio: 6.9
+			precio: 6.9,
+			alergenos: ["gluten", "leche", "huevo"]
 		},
 		{
 			nombre: "Weno, Weno",
 			descripcion: "Salsa Bourbon, Gouda, carne especiada, salsa Cheddar y patatas paja.",
-			precio: 7.9
+			precio: 7.9,
+			alergenos: ["gluten", "leche", "sulfitos"]
 		},
 		{
 			nombre: "Tex-Mex",
 			descripcion: "Cochinita pibil, bacon, Gouda, maíz, dados de tomate, mahonesa Sriracha y ali-oli de ajo negro.",
 			precio: 9,
-			picante: true
+			picante: 1,
+			alergenos: ["gluten", "leche", "huevo", "sulfitos"]
 		},
 		{
 			nombre: "Yankee",
 			descripcion: "Pulled pork, Camembert fundido, pollo a la brasa, huevos de codorniz y salsa Thai.",
-			precio: 9
+			precio: 9,
+			alergenos: ["gluten", "leche", "huevo", "soja", "sésamo"]
 		}
 	]
-}
+};
 /*
+{
 	tortilla_de_patatas: [
 		{
 			nombre: "Tortilla de patatas",
@@ -182,6 +208,7 @@ const Productos: Menu<Producto> = {
 		}
 	]
 }
+
 const Productos_vg: Menu<Producto> = {
 	para_picar: [
     {
@@ -290,10 +317,12 @@ const Productos_vg: Menu<Producto> = {
 
 export default function CartaPage() {
 	return (
-		<main className="p-4">
-			<section id={"carta"} className="pt-32">
+		<main className="relative isolate p-4">
+			<FloatingFoodIcons />
+
+			<section id={"carta"} className="relative z-10 pt-32">
 				<h1 className="text-6xl font-title font-bold text-center text-accent tracking-[0.35em]">Nuestra Carta</h1>
-				{/*<a className={" w-full block font-title text-accent-vg text-center tracking-widest"} href={"#carta-vegana"}>¡Tenemos
+				{/*<a className={"w-full block font-title text-accent-vg text-center tracking-widest"} href={"#carta-vegana"}>¡Tenemos
 					opciones veganas!</a>*/}
 				{ Object.entries(Productos).map(([s, p]: [string, Producto[]]) => (
 						<section key={s} className="flex flex-col my-8 w-full">
@@ -305,9 +334,13 @@ export default function CartaPage() {
 							<ul className="space-y-4">
 								{ p.map((item: Producto, index: number) => (
 									<li key={index} className="border-b border-gray-600 pb-4">
-										<h3 className="text-xl font-bold pb-4">{item.nombre} { item.picante ? <span className="text-red-500">🌶️</span> : null }</h3>
+										<h3 className="text-xl font-bold pb-4">{item.nombre} </h3>
 										<section className="flex gap-1 items-end">
-											<p className="text-gray-400 flex-1">{item.descripcion}</p>
+											<div className="flex-1">
+												<p className="text-gray-400">{item.descripcion}</p>
+											  <Picante nivel={item.picante} />
+												<Alergenos alergenos={item.alergenos} />
+											</div>
 											<p className={"font-semibold text-right text-accent/75"}>{item.precio.toFixed(2)}€</p>
 										</section>
 									</li>
@@ -330,9 +363,12 @@ export default function CartaPage() {
 							<ul className="space-y-4">
 								{ p.map((item: Producto, index: number) => (
 									<li key={index} className="border-b border-gray-600 pb-4">
-										<h3 className="text-xl font-bold pb-4">{item.nombre} { item.picante ? <span className="text-red-500">🌶️</span> : null }</h3>
+										<h3 className="text-xl font-bold pb-4">{item.nombre} <Picante nivel={item.picante} /></h3>
 										<section className="flex gap-1 items-end">
-											<p className="text-gray-400 flex-1">{item.descripcion}</p>
+											<div className="flex-1">
+												<p className="text-gray-400">{item.descripcion}</p>
+												<Alergenos alergenos={item.alergenos} />
+											</div>
 											<p className={"font-semibold text-right text-accent-vg/75"}>{item.precio.toFixed(2)}€</p>
 										</section>
 									</li>

@@ -16,6 +16,8 @@
   --color-overlay: oklch(0 0 0 / 0.5);
   
   --animate-bounce-real: bounce-real 1s infinite;
+  --animate-vibrate-rotate-1: vibrate-rotate-1 60ms infinite alternate linear;
+  --animate-float-food: float-food 9s ease-in-out infinite;
   
   --drop-shadow-glow: drop-shadow(0 0 1rem var(--color-accent));
 }
@@ -28,5 +30,38 @@
   50% {
     transform: translateY(-25%);
     animation-timing-function: cubic-bezier(0.11, 0, 0.5, 0);
+  }
+}
+
+@keyframes vibrate-rotate-1 {
+  0% {
+    transform: rotate(-15deg);
+  }
+  
+  100% {
+    transform: rotate(15deg);
+  }
+}
+
+.food-outline-icon {
+  animation: var(--animate-float-food);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: drop-shadow(0 0 0.65rem currentColor);
+}
+
+@keyframes float-food {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) rotate(var(--food-rotate, 0deg));
+  }
+
+  50% {
+    transform: translate3d(0, -14px, 0) rotate(calc(var(--food-rotate, 0deg) + 5deg));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .food-outline-icon {
+    animation: none;
   }
 }
